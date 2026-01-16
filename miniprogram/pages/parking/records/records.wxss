@@ -1,0 +1,208 @@
+/* pages/parking/records/records.wxss */
+
+.container {
+  padding: 0;
+}
+
+/* 当前在场 */
+.current-parking {
+  padding: 20rpx;
+  background-color: var(--white);
+  margin-bottom: 10rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  color: var(--text-color);
+}
+
+.current-item {
+  background-color: rgba(82, 196, 26, 0.05);
+  border: 2rpx solid rgba(82, 196, 26, 0.3);
+  padding: 20rpx;
+}
+
+.current-item .plate-number {
+  font-size: 36rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+  margin-bottom: 12rpx;
+}
+
+.current-item .parking-info {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+}
+
+.current-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 状态筛选 */
+.status-filter {
+  display: flex;
+  white-space: nowrap;
+  background-color: var(--white);
+  padding: 20rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.status-item {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  margin-right: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  background-color: var(--bg-color);
+  border-radius: 30rpx;
+}
+
+.status-item.active {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+/* 记录列表 */
+.record-list {
+  padding: 20rpx;
+}
+
+.record-item {
+  margin-bottom: 20rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid var(--border-color);
+  margin-bottom: 16rpx;
+}
+
+.plate-number {
+  font-size: 32rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+}
+
+.record-status {
+  font-size: 26rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 6rpx;
+}
+
+.status-pending {
+  background-color: rgba(250, 173, 20, 0.1);
+  color: var(--warning-color);
+}
+
+.status-confirmed,
+.status-entered {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: var(--success-color);
+}
+
+.status-completed,
+.status-exited {
+  background-color: rgba(24, 144, 255, 0.1);
+  color: var(--primary-color);
+}
+
+.status-cancelled,
+.status-expired {
+  background-color: rgba(153, 153, 153, 0.1);
+  color: var(--text-hint);
+}
+
+/* 记录信息 */
+.record-info {
+  padding: 8rpx 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+  font-size: 26rpx;
+}
+
+.info-label {
+  color: var(--text-hint);
+}
+
+.info-value {
+  color: var(--text-color);
+}
+
+/* 操作按钮 */
+.record-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16rpx;
+  border-top: 1rpx solid var(--border-color);
+  margin-top: 16rpx;
+}
+
+.action-btn {
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  margin-left: 16rpx;
+}
+
+.action-btn.qrcode {
+  color: var(--primary-color);
+  border: 2rpx solid var(--primary-color);
+}
+
+.action-btn.entry {
+  background-color: var(--success-color);
+  color: var(--white);
+}
+
+.action-btn.exit {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.action-btn.cancel {
+  color: var(--text-hint);
+  border: 2rpx solid var(--border-color);
+}
+
+/* 加载更多 */
+.loading-more,
+.no-more {
+  text-align: center;
+  padding: 30rpx;
+  color: var(--text-hint);
+  font-size: 26rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-btn {
+  display: inline-block;
+  margin-top: 30rpx;
+  padding: 16rpx 40rpx;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}

@@ -1,0 +1,297 @@
+/* pages/admin/parking/parking.wxss */
+
+.container {
+  padding: 0;
+}
+
+/* 车位状态 */
+.parking-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30rpx;
+  margin: 20rpx;
+}
+
+.status-item {
+  text-align: center;
+  flex: 1;
+}
+
+.status-value {
+  font-size: 44rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.status-label {
+  font-size: 24rpx;
+  color: var(--text-hint);
+}
+
+.status-divider {
+  width: 1rpx;
+  height: 60rpx;
+  background-color: var(--border-color);
+}
+
+/* 登记按钮 */
+.register-btn {
+  margin: 0 20rpx 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 30rpx;
+  border-radius: 12rpx;
+}
+
+/* 状态筛选 */
+.status-filter {
+  display: flex;
+  white-space: nowrap;
+  background-color: var(--white);
+  padding: 20rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.status-filter .status-item {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  margin-right: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  background-color: var(--bg-color);
+  border-radius: 30rpx;
+  text-align: center;
+}
+
+.status-filter .status-item.active {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+/* 记录列表 */
+.record-list {
+  padding: 20rpx;
+}
+
+.record-item {
+  margin-bottom: 20rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid var(--border-color);
+  margin-bottom: 16rpx;
+}
+
+.plate-number {
+  font-size: 32rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+}
+
+.record-status {
+  font-size: 26rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 6rpx;
+}
+
+.status-pending {
+  background-color: rgba(250, 173, 20, 0.1);
+  color: var(--warning-color);
+}
+
+.status-confirmed,
+.status-entered {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: var(--success-color);
+}
+
+.status-completed,
+.status-exited {
+  background-color: rgba(24, 144, 255, 0.1);
+  color: var(--primary-color);
+}
+
+/* 记录信息 */
+.record-info {
+  padding: 8rpx 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+  font-size: 26rpx;
+}
+
+.info-label {
+  color: var(--text-hint);
+}
+
+.info-value {
+  color: var(--text-color);
+}
+
+/* 操作按钮 */
+.record-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16rpx;
+  border-top: 1rpx solid var(--border-color);
+  margin-top: 16rpx;
+}
+
+.action-btn {
+  padding: 12rpx 28rpx;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  margin-left: 16rpx;
+}
+
+.action-btn.entry {
+  background-color: var(--success-color);
+  color: var(--white);
+}
+
+.action-btn.exit {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* 加载更多 */
+.loading-more,
+.no-more {
+  text-align: center;
+  padding: 30rpx;
+  color: var(--text-hint);
+  font-size: 26rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 表单弹窗 */
+.form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.form-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--white);
+  border-radius: 24rpx 24rpx 0 0;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.form-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.form-close {
+  font-size: 48rpx;
+  color: var(--text-hint);
+  line-height: 1;
+}
+
+.form-body {
+  padding: 30rpx;
+}
+
+.form-group {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  margin-bottom: 12rpx;
+}
+
+.required {
+  color: var(--error-color);
+  margin-right: 4rpx;
+}
+
+.form-input {
+  height: 80rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.plate-input {
+  text-transform: uppercase;
+  letter-spacing: 4rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.form-footer {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid var(--border-color);
+  padding-bottom: calc(20rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.btn-cancel,
+.btn-save {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+}
+
+.btn-cancel {
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+  margin-right: 20rpx;
+}
+
+.btn-save {
+  background-color: var(--primary-color);
+  color: var(--white);
+}

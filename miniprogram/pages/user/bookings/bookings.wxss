@@ -1,0 +1,157 @@
+/* pages/user/bookings/bookings.wxss */
+
+.container {
+  padding: 0;
+}
+
+/* 状态筛选 */
+.status-filter {
+  display: flex;
+  white-space: nowrap;
+  background-color: var(--white);
+  padding: 20rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.status-item {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  margin-right: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  background-color: var(--bg-color);
+  border-radius: 30rpx;
+}
+
+.status-item.active {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+/* 预约列表 */
+.booking-list {
+  padding: 20rpx;
+}
+
+.booking-item {
+  margin-bottom: 20rpx;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid var(--border-color);
+  margin-bottom: 16rpx;
+}
+
+.venue-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  flex: 1;
+}
+
+.booking-status {
+  font-size: 26rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 6rpx;
+}
+
+.status-pending {
+  background-color: rgba(250, 173, 20, 0.1);
+  color: var(--warning-color);
+}
+
+.status-confirmed {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: var(--success-color);
+}
+
+.status-completed {
+  background-color: rgba(24, 144, 255, 0.1);
+  color: var(--primary-color);
+}
+
+.status-cancelled {
+  background-color: rgba(153, 153, 153, 0.1);
+  color: var(--text-hint);
+}
+
+/* 预约信息 */
+.booking-info {
+  padding: 8rpx 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+  font-size: 28rpx;
+}
+
+.info-label {
+  color: var(--text-hint);
+}
+
+.info-value {
+  color: var(--text-color);
+}
+
+/* 操作按钮 */
+.booking-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16rpx;
+  border-top: 1rpx solid var(--border-color);
+  margin-top: 16rpx;
+}
+
+.action-btn {
+  padding: 12rpx 32rpx;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  margin-left: 16rpx;
+}
+
+.action-btn.cancel {
+  color: var(--error-color);
+  border: 2rpx solid var(--error-color);
+}
+
+.cancel-reason {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+}
+
+/* 加载更多 */
+.loading-more,
+.no-more {
+  text-align: center;
+  padding: 30rpx;
+  color: var(--text-hint);
+  font-size: 26rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-btn {
+  display: inline-block;
+  margin-top: 30rpx;
+  padding: 16rpx 40rpx;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}

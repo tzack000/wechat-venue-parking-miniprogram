@@ -1,0 +1,1 @@
+{"totalSpaces":200,"availableSpaces":180,"visitorSpaces":50,"reservableSpaces":30,"maxReserveDays":7,"maxReserveHours":4,"rules":"1. 请按规定位置停放\n2. 访客请提前登记\n3. 预约车位请准时到达\n4. 超时占用将取消预约资格","openTime":"00:00","closeTime":"24:00","createTime":{"$date":"2026-01-16T00:00:00.000Z"},"updateTime":{"$date":"2026-01-16T00:00:00.000Z"}}

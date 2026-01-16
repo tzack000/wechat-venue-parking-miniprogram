@@ -1,0 +1,65 @@
+/* pages/admin/index/index.wxss */
+
+.container {
+  padding: 0;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, #722ed1 0%, #9254de 100%);
+  padding: 60rpx 30rpx;
+  color: #fff;
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.header-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.menu-list {
+  padding: 20rpx;
+  margin-top: -20rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.menu-icon {
+  font-size: 48rpx;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  border-radius: 16rpx;
+  margin-right: 24rpx;
+}
+
+.menu-content {
+  flex: 1;
+}
+
+.menu-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.menu-desc {
+  font-size: 26rpx;
+  color: var(--text-hint);
+}
+
+.menu-arrow {
+  font-size: 28rpx;
+  color: var(--text-hint);
+}

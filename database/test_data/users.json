@@ -1,0 +1,3 @@
+{"openid":"test_admin_openid_001","nickName":"管理员张三","avatarUrl":"","phone":"13800138001","isAdmin":true,"createTime":{"$date":"2026-01-16T00:00:00.000Z"},"updateTime":{"$date":"2026-01-16T00:00:00.000Z"}}
+{"openid":"test_user_openid_001","nickName":"用户李四","avatarUrl":"","phone":"13800138002","isAdmin":false,"createTime":{"$date":"2026-01-16T00:00:00.000Z"},"updateTime":{"$date":"2026-01-16T00:00:00.000Z"}}
+{"openid":"test_user_openid_002","nickName":"用户王五","avatarUrl":"","phone":"13800138003","isAdmin":false,"createTime":{"$date":"2026-01-16T00:00:00.000Z"},"updateTime":{"$date":"2026-01-16T00:00:00.000Z"}}

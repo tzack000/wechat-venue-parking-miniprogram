@@ -1,0 +1,108 @@
+<!-- pages/venue/detail/detail.wxml -->
+<view class="container" wx:if="{{!loading}}">
+  <!-- 场馆图片 -->
+  <swiper class="venue-swiper" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{venue.images}}" wx:key="*this">
+      <image 
+        src="{{item}}" 
+        mode="aspectFill" 
+        bindtap="previewImage"
+        data-url="{{item}}"
+      ></image>
+    </swiper-item>
+    <swiper-item wx:if="{{venue.images.length === 0}}">
+      <image src="/images/venue-default.png" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 场馆基本信息 -->
+  <view class="venue-info card">
+    <view class="venue-header">
+      <view class="venue-name">{{venue.name}}</view>
+      <view class="venue-type tag tag-primary">{{venue.typeIcon}} {{venue.typeText}}</view>
+    </view>
+    <view class="venue-price">
+      <text class="price-value">¥{{venue.price}}</text>
+      <text class="price-unit">/{{venue.priceUnit || '小时'}}</text>
+    </view>
+    <view class="venue-meta">
+      <view class="meta-item">📍 {{venue.location}}</view>
+      <view class="meta-item">🕐 营业时间: {{venue.openTime}} - {{venue.closeTime}}</view>
+    </view>
+    <view class="venue-desc" wx:if="{{venue.description}}">
+      <view class="desc-title">场馆介绍</view>
+      <view class="desc-content">{{venue.description}}</view>
+    </view>
+    <view class="venue-facilities" wx:if="{{venue.facilities && venue.facilities.length > 0}}">
+      <view class="facilities-title">设施服务</view>
+      <view class="facilities-list">
+        <view class="facility-tag" wx:for="{{venue.facilities}}" wx:key="*this">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 日期选择 -->
+  <view class="date-section card">
+    <view class="section-title">选择日期</view>
+    <scroll-view class="date-list" scroll-x enable-flex>
+      <view 
+        class="date-item {{selectedDate === item.date ? 'active' : ''}}"
+        wx:for="{{dateList}}"
+        wx:key="date"
+        bindtap="onDateSelect"
+        data-date="{{item.date}}"
+      >
+        <view class="date-day">{{item.day}}</view>
+        <view class="date-num">{{item.monthDay}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 时段选择 -->
+  <view class="slot-section card">
+    <view class="section-title">选择时段</view>
+    
+    <view class="loading" wx:if="{{slotsLoading}}">
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <view class="slot-list" wx:elif="{{timeSlots.length > 0}}">
+      <view 
+        class="slot-item {{item.status}} {{selectedSlot && selectedSlot.startTime === item.startTime ? 'selected' : ''}}"
+        wx:for="{{timeSlots}}"
+        wx:key="startTime"
+        bindtap="onSlotSelect"
+        data-slot="{{item}}"
+      >
+        <view class="slot-time">{{item.startTime}}-{{item.endTime}}</view>
+        <view class="slot-status">
+          <text wx:if="{{item.status === 'available'}}">可预约</text>
+          <text wx:elif="{{item.status === 'booked'}}">已预约</text>
+          <text wx:elif="{{item.status === 'expired'}}">已过期</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-slots" wx:else>
+      <text>暂无可预约时段</text>
+    </view>
+  </view>
+
+  <!-- 底部预约按钮 -->
+  <view class="bottom-bar safe-area-bottom">
+    <view class="selected-info" wx:if="{{selectedSlot}}">
+      <text>已选: {{selectedDate}} {{selectedSlot.startTime}}-{{selectedSlot.endTime}}</text>
+    </view>
+    <view class="selected-info" wx:else>
+      <text class="text-hint">请选择预约时段</text>
+    </view>
+    <button class="book-btn {{selectedSlot ? '' : 'disabled'}}" bindtap="goToBooking">
+      立即预约
+    </button>
+  </view>
+</view>
+
+<!-- 加载状态 -->
+<view class="loading-page" wx:if="{{loading}}">
+  <text>加载中...</text>
+</view>

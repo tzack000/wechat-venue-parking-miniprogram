@@ -1,0 +1,241 @@
+/* pages/venue/detail/detail.wxss */
+
+.container {
+  padding-bottom: 140rpx;
+}
+
+/* 轮播图 */
+.venue-swiper {
+  width: 100%;
+  height: 450rpx;
+}
+
+.venue-swiper image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 场馆信息 */
+.venue-info {
+  margin: 20rpx;
+}
+
+.venue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.venue-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  flex: 1;
+  margin-right: 16rpx;
+}
+
+.venue-price {
+  margin-bottom: 20rpx;
+}
+
+.price-value {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: var(--error-color);
+}
+
+.price-unit {
+  font-size: 26rpx;
+  color: var(--text-hint);
+}
+
+.venue-meta {
+  margin-bottom: 20rpx;
+}
+
+.meta-item {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 8rpx;
+}
+
+.venue-desc,
+.venue-facilities {
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.desc-title,
+.facilities-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.desc-content {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.facilities-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.facility-tag {
+  padding: 8rpx 20rpx;
+  background-color: var(--bg-color);
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-right: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+/* 日期选择 */
+.date-section,
+.slot-section {
+  margin: 0 20rpx 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.date-list {
+  display: flex;
+  white-space: nowrap;
+}
+
+.date-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 28rpx;
+  margin-right: 16rpx;
+  background-color: var(--bg-color);
+  border-radius: 12rpx;
+  min-width: 100rpx;
+}
+
+.date-item.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.date-day {
+  font-size: 26rpx;
+  margin-bottom: 6rpx;
+}
+
+.date-num {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+/* 时段选择 */
+.slot-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.slot-item {
+  width: calc(33.33% - 14rpx);
+  padding: 20rpx 0;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  border-radius: 12rpx;
+  border: 2rpx solid var(--border-color);
+}
+
+.slot-item:nth-child(3n) {
+  margin-right: 0;
+}
+
+.slot-item.available {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.slot-item.available:active,
+.slot-item.selected {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.slot-item.booked {
+  background-color: var(--bg-color);
+  color: var(--text-hint);
+  border-color: var(--bg-color);
+}
+
+.slot-item.expired {
+  background-color: var(--bg-color);
+  color: var(--text-hint);
+  border-color: var(--bg-color);
+}
+
+.slot-time {
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+}
+
+.slot-status {
+  font-size: 22rpx;
+}
+
+.empty-slots {
+  text-align: center;
+  padding: 40rpx;
+  color: var(--text-hint);
+}
+
+/* 底部栏 */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  background-color: var(--white);
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.selected-info {
+  flex: 1;
+  font-size: 26rpx;
+  color: var(--text-color);
+  padding-right: 20rpx;
+}
+
+.book-btn {
+  padding: 20rpx 60rpx;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  border: none;
+}
+
+.book-btn.disabled {
+  background-color: #d9d9d9;
+}
+
+.book-btn::after {
+  border: none;
+}
+
+/* 加载页面 */
+.loading-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--text-hint);
+}

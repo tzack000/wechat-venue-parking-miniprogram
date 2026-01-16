@@ -1,0 +1,142 @@
+<!-- pages/admin/venues/venues.wxml -->
+<view class="container">
+  <!-- 场馆列表 -->
+  <view class="venue-list">
+    <view 
+      class="venue-item card"
+      wx:for="{{venues}}"
+      wx:key="_id"
+    >
+      <view class="venue-header">
+        <view class="venue-name">{{item.name}}</view>
+        <view class="venue-status {{item.enabled ? 'enabled' : 'disabled'}}">
+          {{item.enabled ? '启用中' : '已停用'}}
+        </view>
+      </view>
+      <view class="venue-info">
+        <view class="info-row">
+          <text>类型: {{item.typeText}}</text>
+          <text>价格: ¥{{item.price}}/小时</text>
+        </view>
+        <view class="info-row">
+          <text>位置: {{item.location}}</text>
+        </view>
+        <view class="info-row">
+          <text>营业时间: {{item.openTime}} - {{item.closeTime}}</text>
+        </view>
+      </view>
+      <view class="venue-actions">
+        <view class="action-btn edit" bindtap="showEditForm" data-venue="{{item}}">
+          编辑
+        </view>
+        <view 
+          class="action-btn {{item.enabled ? 'disable' : 'enable'}}" 
+          bindtap="toggleVenueStatus" 
+          data-venue="{{item}}"
+        >
+          {{item.enabled ? '停用' : '启用'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && venues.length === 0}}">
+    <view class="empty-icon">🏟️</view>
+    <view class="empty-text">暂无场馆</view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="add-btn" bindtap="showAddForm">+ 添加场馆</view>
+
+  <!-- 表单弹窗 -->
+  <view class="form-modal" wx:if="{{showForm}}">
+    <view class="form-mask" bindtap="hideForm"></view>
+    <view class="form-content">
+      <view class="form-header">
+        <view class="form-title">{{editMode ? '编辑场馆' : '添加场馆'}}</view>
+        <view class="form-close" bindtap="hideForm">×</view>
+      </view>
+      
+      <scroll-view class="form-body" scroll-y>
+        <view class="form-group">
+          <view class="form-label"><text class="required">*</text>场馆名称</view>
+          <input 
+            class="form-input" 
+            placeholder="请输入场馆名称"
+            value="{{formData.name}}"
+            data-field="name"
+            bindinput="onInput"
+          />
+        </view>
+        
+        <view class="form-group">
+          <view class="form-label"><text class="required">*</text>场馆类型</view>
+          <picker mode="selector" range="{{venueTypes}}" range-key="label" value="{{formData.typeIndex}}" bindchange="onTypeChange">
+            <view class="form-picker">
+              <text>{{venueTypes[formData.typeIndex].label}}</text>
+              <text class="picker-arrow">></text>
+            </view>
+          </picker>
+        </view>
+        
+        <view class="form-group">
+          <view class="form-label"><text class="required">*</text>位置</view>
+          <input 
+            class="form-input" 
+            placeholder="请输入场馆位置"
+            value="{{formData.location}}"
+            data-field="location"
+            bindinput="onInput"
+          />
+        </view>
+        
+        <view class="form-group">
+          <view class="form-label"><text class="required">*</text>价格（元/小时）</view>
+          <input 
+            class="form-input" 
+            type="digit"
+            placeholder="请输入价格"
+            value="{{formData.price}}"
+            data-field="price"
+            bindinput="onInput"
+          />
+        </view>
+        
+        <view class="form-group">
+          <view class="form-label">开放时间</view>
+          <view class="time-row">
+            <picker mode="time" value="{{formData.openTime}}" data-field="openTime" bindchange="onTimeChange">
+              <view class="time-picker">{{formData.openTime}}</view>
+            </picker>
+            <text class="time-separator">至</text>
+            <picker mode="time" value="{{formData.closeTime}}" data-field="closeTime" bindchange="onTimeChange">
+              <view class="time-picker">{{formData.closeTime}}</view>
+            </picker>
+          </view>
+        </view>
+        
+        <view class="form-group">
+          <view class="form-label">场馆介绍</view>
+          <textarea 
+            class="form-textarea" 
+            placeholder="请输入场馆介绍"
+            value="{{formData.description}}"
+            data-field="description"
+            bindinput="onInput"
+          ></textarea>
+        </view>
+        
+        <view class="form-group switch-group">
+          <view class="form-label">预约需审核</view>
+          <switch checked="{{formData.needApproval}}" bindchange="onApprovalChange" color="#1890ff"/>
+        </view>
+      </scroll-view>
+      
+      <view class="form-footer">
+        <view class="btn-cancel" bindtap="hideForm">取消</view>
+        <view class="btn-save" bindtap="saveVenue">保存</view>
+      </view>
+    </view>
+  </view>
+</view>

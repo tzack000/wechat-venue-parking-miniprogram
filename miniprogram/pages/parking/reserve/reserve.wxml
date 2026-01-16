@@ -1,0 +1,97 @@
+<!-- pages/parking/reserve/reserve.wxml -->
+<view class="container">
+  <!-- 车位状态 -->
+  <view class="parking-status card" wx:if="{{parkingStatus}}">
+    <view class="status-info">
+      <text class="status-label">当前空闲车位</text>
+      <text class="status-value text-success">{{parkingStatus.availableSpaces}}</text>
+      <text class="status-unit">/ {{parkingStatus.totalSpaces}}</text>
+    </view>
+  </view>
+
+  <!-- 预约表单 -->
+  <view class="reserve-form card">
+    <view class="form-title">车位预约</view>
+    
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        车牌号
+      </view>
+      <input 
+        class="form-input plate-input" 
+        placeholder="请输入车牌号，如：京A12345" 
+        value="{{plateNumber}}"
+        bindinput="onPlateInput"
+        maxlength="8"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        预约日期
+      </view>
+      <picker 
+        mode="selector" 
+        range="{{dateRange}}" 
+        bindchange="onDateChange"
+      >
+        <view class="form-picker">
+          <text>{{reserveDate || '请选择日期'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        开始时间
+      </view>
+      <picker 
+        mode="selector" 
+        range="{{timeRange}}" 
+        bindchange="onStartTimeChange"
+      >
+        <view class="form-picker">
+          <text>{{reserveStartTime || '请选择开始时间'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">结束时间（可选）</view>
+      <picker 
+        mode="selector" 
+        range="{{timeRange}}" 
+        bindchange="onEndTimeChange"
+      >
+        <view class="form-picker">
+          <text>{{reserveEndTime || '请选择结束时间'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+    
+    <button 
+      class="submit-btn" 
+      bindtap="submitReserve"
+      loading="{{submitting}}"
+      disabled="{{submitting}}"
+    >
+      确认预约
+    </button>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="tips card">
+    <view class="tips-title">预约须知</view>
+    <view class="tips-content">
+      <view class="tip-item">1. 可提前3天预约车位</view>
+      <view class="tip-item">2. 预约后请在开始时间后2小时内入场，否则预约自动失效</view>
+      <view class="tip-item">3. 如需取消预约，请提前1小时操作</view>
+    </view>
+  </view>
+</view>

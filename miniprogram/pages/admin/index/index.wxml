@@ -1,0 +1,24 @@
+<!-- pages/admin/index/index.wxml -->
+<view class="container">
+  <view class="admin-header">
+    <view class="header-title">管理后台</view>
+    <view class="header-desc">场馆预约与停车登记管理</view>
+  </view>
+
+  <view class="menu-list">
+    <view 
+      class="menu-item card"
+      wx:for="{{menuList}}"
+      wx:key="id"
+      bindtap="onMenuTap"
+      data-url="{{item.url}}"
+    >
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="menu-content">
+        <view class="menu-title">{{item.title}}</view>
+        <view class="menu-desc">{{item.desc}}</view>
+      </view>
+      <view class="menu-arrow">></view>
+    </view>
+  </view>
+</view>

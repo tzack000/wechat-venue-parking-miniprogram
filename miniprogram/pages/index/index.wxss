@@ -1,0 +1,197 @@
+/* pages/index/index.wxss */
+
+.container {
+  padding: 0;
+  padding-bottom: 30rpx;
+}
+
+/* Banner */
+.banner {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 60rpx 30rpx;
+  color: #fff;
+}
+
+.banner-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.banner-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+/* 快捷入口 */
+.quick-actions {
+  display: flex;
+  justify-content: space-around;
+  margin: -40rpx 20rpx 20rpx;
+  padding: 30rpx 20rpx;
+  position: relative;
+  z-index: 10;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  margin-bottom: 12rpx;
+}
+
+.venue-icon {
+  background: rgba(24, 144, 255, 0.1);
+}
+
+.parking-icon {
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.booking-icon {
+  background: rgba(250, 173, 20, 0.1);
+}
+
+.record-icon {
+  background: rgba(114, 46, 209, 0.1);
+}
+
+.action-text {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+/* Section */
+.section {
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: var(--text-hint);
+}
+
+/* 停车状态 */
+.parking-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30rpx;
+}
+
+.status-item {
+  text-align: center;
+  flex: 1;
+}
+
+.status-value {
+  font-size: 44rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.status-label {
+  font-size: 24rpx;
+  color: var(--text-hint);
+}
+
+.status-divider {
+  width: 1rpx;
+  height: 60rpx;
+  background-color: var(--border-color);
+}
+
+/* 场馆列表 */
+.venue-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.venue-card {
+  width: calc(50% - 10rpx);
+  padding: 0;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.venue-image {
+  position: relative;
+  width: 100%;
+  height: 200rpx;
+}
+
+.venue-image image {
+  width: 100%;
+  height: 100%;
+}
+
+.venue-type-tag {
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.venue-info {
+  padding: 16rpx;
+}
+
+.venue-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.venue-location {
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.venue-price {
+  color: var(--error-color);
+}
+
+.price-value {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.price-unit {
+  font-size: 22rpx;
+  color: var(--text-hint);
+}

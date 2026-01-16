@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/venue/list/list",
+    "pages/venue/detail/detail",
+    "pages/venue/booking/booking",
+    "pages/parking/register/register",
+    "pages/parking/reserve/reserve",
+    "pages/parking/records/records",
+    "pages/user/center/center",
+    "pages/user/bookings/bookings",
+    "pages/user/parking/parking",
+    "pages/admin/index/index",
+    "pages/admin/venues/venues",
+    "pages/admin/bookings/bookings",
+    "pages/admin/parking/parking"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "场馆预约",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/venue/list/list",
+        "text": "场馆预约",
+        "iconPath": "images/tab-venue.png",
+        "selectedIconPath": "images/tab-venue-active.png"
+      },
+      {
+        "pagePath": "pages/parking/register/register",
+        "text": "停车登记",
+        "iconPath": "images/tab-parking.png",
+        "selectedIconPath": "images/tab-parking-active.png"
+      },
+      {
+        "pagePath": "pages/user/center/center",
+        "text": "我的",
+        "iconPath": "images/tab-user.png",
+        "selectedIconPath": "images/tab-user-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取您的位置信息，为您推荐附近场馆"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "cloud": true
+}

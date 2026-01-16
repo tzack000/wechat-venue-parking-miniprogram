@@ -1,0 +1,153 @@
+<!-- pages/admin/parking/parking.wxml -->
+<view class="container">
+  <!-- 车位状态 -->
+  <view class="parking-status card" wx:if="{{parkingStatus}}">
+    <view class="status-item">
+      <view class="status-value">{{parkingStatus.totalSpaces}}</view>
+      <view class="status-label">总车位</view>
+    </view>
+    <view class="status-divider"></view>
+    <view class="status-item">
+      <view class="status-value text-success">{{parkingStatus.availableSpaces}}</view>
+      <view class="status-label">空闲</view>
+    </view>
+    <view class="status-divider"></view>
+    <view class="status-item">
+      <view class="status-value text-warning">{{parkingStatus.usedSpaces}}</view>
+      <view class="status-label">已占用</view>
+    </view>
+  </view>
+
+  <!-- 手动登记按钮 -->
+  <view class="register-btn" bindtap="showRegisterForm">
+    + 手动登记车辆
+  </view>
+
+  <!-- 状态筛选 -->
+  <scroll-view class="status-filter" scroll-x enable-flex>
+    <view 
+      class="status-item {{currentStatus === item.value ? 'active' : ''}}"
+      wx:for="{{statusTabs}}"
+      wx:key="value"
+      bindtap="onStatusChange"
+      data-status="{{item.value}}"
+    >
+      {{item.label}}
+    </view>
+  </scroll-view>
+
+  <!-- 记录列表 -->
+  <view class="record-list">
+    <view 
+      class="record-item card"
+      wx:for="{{records}}"
+      wx:key="_id"
+    >
+      <view class="record-header">
+        <view class="plate-number">{{item.plateNumber}}</view>
+        <view class="record-status {{item.statusClass}}">{{item.statusText}}</view>
+      </view>
+      
+      <view class="record-info">
+        <view class="info-row">
+          <text class="info-label">类型</text>
+          <text class="info-value">{{item.typeText}}</text>
+        </view>
+        <view class="info-row" wx:if="{{item.purpose}}">
+          <text class="info-label">访问目的</text>
+          <text class="info-value">{{item.purpose}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">登记时间</text>
+          <text class="info-value">{{item.createTimeStr}}</text>
+        </view>
+        <view class="info-row" wx:if="{{item.entryTime}}">
+          <text class="info-label">入场时间</text>
+          <text class="info-value">{{item.entryTimeStr}}</text>
+        </view>
+        <view class="info-row" wx:if="{{item.exitTime}}">
+          <text class="info-label">出场时间</text>
+          <text class="info-value">{{item.exitTimeStr}}</text>
+        </view>
+        <view class="info-row" wx:if="{{item.duration}}">
+          <text class="info-label">停车时长</text>
+          <text class="info-value">{{item.durationStr}}</text>
+        </view>
+      </view>
+      
+      <view class="record-actions" wx:if="{{item.canConfirmEntry || item.canConfirmExit}}">
+        <view 
+          class="action-btn entry" 
+          wx:if="{{item.canConfirmEntry}}"
+          bindtap="onConfirmEntry" 
+          data-id="{{item._id}}"
+        >
+          确认入场
+        </view>
+        <view 
+          class="action-btn exit" 
+          wx:if="{{item.canConfirmExit}}"
+          bindtap="onConfirmExit" 
+          data-id="{{item._id}}"
+        >
+          确认出场
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-more" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 没有更多 -->
+  <view class="no-more" wx:if="{{!hasMore && records.length > 0}}">
+    <text>— 没有更多了 —</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && records.length === 0}}">
+    <view class="empty-icon">🚗</view>
+    <view class="empty-text">暂无停车记录</view>
+  </view>
+
+  <!-- 登记表单弹窗 -->
+  <view class="form-modal" wx:if="{{showRegisterForm}}">
+    <view class="form-mask" bindtap="hideRegisterForm"></view>
+    <view class="form-content">
+      <view class="form-header">
+        <view class="form-title">手动登记车辆</view>
+        <view class="form-close" bindtap="hideRegisterForm">×</view>
+      </view>
+      
+      <view class="form-body">
+        <view class="form-group">
+          <view class="form-label"><text class="required">*</text>车牌号</view>
+          <input 
+            class="form-input plate-input" 
+            placeholder="请输入车牌号"
+            value="{{registerPlate}}"
+            bindinput="onPlateInput"
+            maxlength="8"
+          />
+        </view>
+        
+        <view class="form-group">
+          <view class="form-label">访问目的</view>
+          <input 
+            class="form-input" 
+            placeholder="请输入访问目的"
+            value="{{registerPurpose}}"
+            bindinput="onPurposeInput"
+          />
+        </view>
+      </view>
+      
+      <view class="form-footer">
+        <view class="btn-cancel" bindtap="hideRegisterForm">取消</view>
+        <view class="btn-save" bindtap="submitRegister">登记</view>
+      </view>
+    </view>
+  </view>
+</view>

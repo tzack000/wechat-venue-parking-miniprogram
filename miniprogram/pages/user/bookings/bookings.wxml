@@ -1,0 +1,73 @@
+<!-- pages/user/bookings/bookings.wxml -->
+<view class="container">
+  <!-- 状态筛选 -->
+  <scroll-view class="status-filter" scroll-x enable-flex>
+    <view 
+      class="status-item {{currentStatus === item.value ? 'active' : ''}}"
+      wx:for="{{statusTabs}}"
+      wx:key="value"
+      bindtap="onStatusChange"
+      data-status="{{item.value}}"
+    >
+      {{item.label}}
+    </view>
+  </scroll-view>
+
+  <!-- 预约列表 -->
+  <view class="booking-list">
+    <view 
+      class="booking-item card"
+      wx:for="{{bookings}}"
+      wx:key="_id"
+    >
+      <view class="booking-header">
+        <view class="venue-name">{{item.venueTypeIcon}} {{item.venueName}}</view>
+        <view class="booking-status {{item.statusClass}}">{{item.statusText}}</view>
+      </view>
+      
+      <view class="booking-info" bindtap="onViewDetail" data-id="{{item._id}}">
+        <view class="info-row">
+          <text class="info-label">预约日期</text>
+          <text class="info-value">{{item.date}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">预约时段</text>
+          <text class="info-value">{{item.startTime}} - {{item.endTime}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">预约人</text>
+          <text class="info-value">{{item.userName}} {{item.userPhone}}</text>
+        </view>
+      </view>
+      
+      <view class="booking-actions" wx:if="{{item.canCancel}}">
+        <view class="action-btn cancel" bindtap="onCancelBooking" data-id="{{item._id}}">
+          取消预约
+        </view>
+      </view>
+      
+      <view class="cancel-reason" wx:if="{{item.status === 'cancelled' && item.cancelReason}}">
+        <text class="text-hint">取消原因: {{item.cancelReason}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-more" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 没有更多 -->
+  <view class="no-more" wx:if="{{!hasMore && bookings.length > 0}}">
+    <text>— 没有更多了 —</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && bookings.length === 0}}">
+    <view class="empty-icon">📋</view>
+    <view class="empty-text">暂无预约记录</view>
+    <navigator url="/pages/venue/list/list" open-type="switchTab" class="empty-btn">
+      去预约场馆
+    </navigator>
+  </view>
+</view>

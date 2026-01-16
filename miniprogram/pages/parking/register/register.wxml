@@ -1,0 +1,100 @@
+<!-- pages/parking/register/register.wxml -->
+<view class="container">
+  <!-- 车位状态 -->
+  <view class="parking-status card" wx:if="{{parkingStatus}}">
+    <view class="status-item">
+      <view class="status-value">{{parkingStatus.totalSpaces}}</view>
+      <view class="status-label">总车位</view>
+    </view>
+    <view class="status-divider"></view>
+    <view class="status-item">
+      <view class="status-value text-success">{{parkingStatus.availableSpaces}}</view>
+      <view class="status-label">空闲</view>
+    </view>
+    <view class="status-divider"></view>
+    <view class="status-item">
+      <view class="status-value text-warning">{{parkingStatus.usedSpaces}}</view>
+      <view class="status-label">已占用</view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToReserve">
+      <view class="action-icon">🅿️</view>
+      <view class="action-text">车位预约</view>
+    </view>
+    <view class="action-item" bindtap="goToRecords">
+      <view class="action-icon">📝</view>
+      <view class="action-text">停车记录</view>
+    </view>
+  </view>
+
+  <!-- 访客登记表单 -->
+  <view class="register-form card">
+    <view class="form-title">访客车辆登记</view>
+    
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        车牌号
+      </view>
+      <input 
+        class="form-input plate-input" 
+        placeholder="请输入车牌号，如：京A12345" 
+        value="{{plateNumber}}"
+        bindinput="onPlateInput"
+        maxlength="8"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        访问目的
+      </view>
+      <input 
+        class="form-input" 
+        placeholder="请输入访问目的，如：拜访朋友" 
+        value="{{purpose}}"
+        bindinput="onPurposeInput"
+        maxlength="50"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">预计停留时长</view>
+      <picker 
+        mode="selector" 
+        range="{{durationOptions}}" 
+        range-key="label"
+        bindchange="onDurationChange"
+      >
+        <view class="form-picker">
+          <text>{{durationOptions[expectedDuration === '1' ? 0 : (expectedDuration === '2' ? 1 : (expectedDuration === '4' ? 2 : (expectedDuration === '8' ? 3 : 4)))].label}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+    
+    <button 
+      class="submit-btn" 
+      bindtap="submitRegister"
+      loading="{{submitting}}"
+      disabled="{{submitting}}"
+    >
+      提交登记
+    </button>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="tips card">
+    <view class="tips-title">温馨提示</view>
+    <view class="tips-content">
+      <view class="tip-item">1. 访客车辆请先登记后再入场</view>
+      <view class="tip-item">2. 入场时请向保安出示登记凭证</view>
+      <view class="tip-item">3. 如需长时间停车，建议提前预约车位</view>
+      <view class="tip-item">4. 登记有效期为2小时，过期需重新登记</view>
+    </view>
+  </view>
+</view>

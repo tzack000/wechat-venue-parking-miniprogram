@@ -1,0 +1,95 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 头部Banner -->
+  <view class="banner">
+    <view class="banner-content">
+      <view class="banner-title">场馆预约 · 停车登记</view>
+      <view class="banner-subtitle">便捷服务，一键预约</view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-actions card">
+    <view class="action-item" bindtap="goToVenueList">
+      <view class="action-icon venue-icon">🏟️</view>
+      <view class="action-text">场馆预约</view>
+    </view>
+    <view class="action-item" bindtap="goToParking">
+      <view class="action-icon parking-icon">🚗</view>
+      <view class="action-text">停车登记</view>
+    </view>
+    <view class="action-item" bindtap="goToMyBookings">
+      <view class="action-icon booking-icon">📋</view>
+      <view class="action-text">我的预约</view>
+    </view>
+    <view class="action-item" bindtap="goToParkingRecords">
+      <view class="action-icon record-icon">📝</view>
+      <view class="action-text">停车记录</view>
+    </view>
+  </view>
+
+  <!-- 停车位状态 -->
+  <view class="section" wx:if="{{parkingStatus}}">
+    <view class="section-header">
+      <view class="section-title">车位状态</view>
+    </view>
+    <view class="parking-status card">
+      <view class="status-item">
+        <view class="status-value">{{parkingStatus.totalSpaces}}</view>
+        <view class="status-label">总车位</view>
+      </view>
+      <view class="status-divider"></view>
+      <view class="status-item">
+        <view class="status-value text-success">{{parkingStatus.availableSpaces}}</view>
+        <view class="status-label">空闲</view>
+      </view>
+      <view class="status-divider"></view>
+      <view class="status-item">
+        <view class="status-value text-warning">{{parkingStatus.usedSpaces}}</view>
+        <view class="status-label">已占用</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门场馆 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">热门场馆</view>
+      <view class="section-more" bindtap="goToVenueList">查看更多 ></view>
+    </view>
+    
+    <view class="loading" wx:if="{{loading}}">
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <view class="venue-list" wx:elif="{{venues.length > 0}}">
+      <view 
+        class="venue-card card" 
+        wx:for="{{venues}}" 
+        wx:key="_id"
+        bindtap="goToVenueDetail"
+        data-id="{{item._id}}"
+      >
+        <view class="venue-image">
+          <image 
+            src="{{item.images[0] || '/images/venue-default.png'}}" 
+            mode="aspectFill"
+          ></image>
+          <view class="venue-type-tag">{{item.typeIcon}} {{item.typeText}}</view>
+        </view>
+        <view class="venue-info">
+          <view class="venue-name">{{item.name}}</view>
+          <view class="venue-location text-hint">📍 {{item.location}}</view>
+          <view class="venue-price">
+            <text class="price-value">¥{{item.price}}</text>
+            <text class="price-unit">/{{item.priceUnit || '小时'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-state" wx:else>
+      <view class="empty-text">暂无可预约场馆</view>
+    </view>
+  </view>
+</view>
